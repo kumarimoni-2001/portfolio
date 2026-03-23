@@ -320,7 +320,7 @@ body {
 
 /* RIGHT SIDE (IMPORTANT) */
 .content-right {
-    width: 55%;   /* increase this */
+    width: 70%;   /* increase this */
     display: flex;
     justify-content: center;
 }
