@@ -320,7 +320,7 @@ body {
 
 /* RIGHT SIDE (IMPORTANT) */
 .content-right {
-    width: 70%;   /* increase this */
+    width: 55%;   /* increase this */
     display: flex;
     justify-content: center;
 }
@@ -351,6 +351,23 @@ body {
 .content-left {
   flex: 1; /* Takes up the remaining space on the left */
 }
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.content-left {
+    flex: 1;
+}
+
+.content-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
 .center-name {
     margin-top: 180px;   /* creates gap from navbar */
     text-align: center;
@@ -405,78 +422,165 @@ body {
 .stat-box h3 { font-size: 22px; margin: 0; }
 .stat-box p { color: #8b949e; font-size: 10px; text-transform: uppercase; margin: 0; }
 
-/* About Section Layout */
-.about-section {
-    padding: 60px 8%;
-    background-color: #0d1117; /* Dark theme to match your profile */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
 }
+.img-gradient-ring {
+  animation: float 3s ease-in-out infinite;
+}
+.status-badge {
+  animation: float 3.5s ease-in-out infinite;
+}
+.stat-box {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* stagger effect */
+.stat-box:nth-child(1) { animation-delay: 0s; }
+.stat-box:nth-child(2) { animation-delay: 0.4s; }
+.stat-box:nth-child(3) { animation-delay: 0.8s; }
+.stat-box:nth-child(4) { animation-delay: 1.2s; }
+
+.current-focus-box {
+  animation: float 5s ease-in-out infinite;
+}
+/* About Section Layout */
+/* ===== ABOUT SECTION ===== */
+
+.about-section {
+  padding: 80px 20px;
+}
+
+.about-wrapper {
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* ===== HEADER ===== */
 
 .section-label {
-    color: #d29922; /* Gold accent color */
-    font-weight: bold;
-    letter-spacing: 2px;
-    font-size: 12px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  font-weight: 600;
+
+  /* GOLDEN COLOR */
+  background: linear-gradient(to right, #facc15, #fbbf24);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
+/* 🔥 FIXED: Golden About Me */
 .section-title {
-    font-size: 3rem;
-    color: #f0f6fc;
-    margin: 10px 0;
+  font-size: 36px;
+  font-weight: bold;
+  background: linear-gradient(to right, #facc15, #fbbf24);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  margin: 10px 0;
+}
+
+.section-subtitle {
+  color: #cbd5f5;
+  font-size: 16px;
+  margin-bottom: 10px;
+  line-height: 1.6;
 }
 
 .gradient-line {
-    width: 100px;
-    height: 4px;
-    background: linear-gradient(to right, #ffd89b, #19fb9b); /* Match your profile ring */
-    margin: 20px 0 40px;
-    border-radius: 2px;
+  height: 3px;
+  width: 80px;
+  background: linear-gradient(to right, #38bdf8, #6366f1);
+  margin-bottom: 40px;
 }
 
-/* Flexbox for Side-by-Side layout */
-.about-flex {
+/* ===== GRID ===== */
+
+.about-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: stretch; /* IMPORTANT for equal height */
+}
+
+/* ===== IMAGE (FIXED HEIGHT ISSUE) ===== */
+
+.about-image {
+  padding: 4px; /* border thickness */
+  border-radius: 25px;
+  background: linear-gradient(45deg, #0f172a, #1e293b); /* golden border */
+  overflow: hidden;
+  transition: 0.4s ease;
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 22px;
+  transition: transform 0.4s ease;
+}
+
+/* 🔥 HOVER EFFECT */
+.about-image:hover img {
+  transform: scale(1.08); /* zoom */
+}
+
+.about-image:hover {
+  box-shadow: 0 20px 50px rgba(250, 204, 21, 0.5); /* glow */
+}
+
+
+/* ===== CONTENT ===== */
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.about-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: 0.3s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-6px);
+}
+
+.about-card h2 {
+  margin-bottom: 8px;
+}
+
+.about-card p {
+  color: #cbd5f5;
+  line-height: 1.6;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+  .about-container {
+    grid-template-columns: 1fr;
+  }
+
+  .about-image {
     display: flex;
-    gap: 30px;
-}
+    justify-content: center;
+    height: auto;
+  }
 
-.about-main-card {
-    flex: 1.5;
-    background: rgba(22, 27, 34, 0.5);
-    padding: 40px;
-    border-radius: 24px;
-    border: 1px solid #30363d;
-    line-height: 1.8;
-    color: #c9d1d9;
-}
-
-.about-features {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.feature-box {
-    background: rgba(22, 27, 34, 0.8);
-    padding: 25px;
-    border-radius: 20px;
-    border: 1px solid #30363d;
-}
-
-.feature-box h4 {
-    color: white;
-    margin-bottom: 8px;
-}
-
-.feature-box p {
-    color: #8b949e;
-    font-size: 0.9rem;
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 900px) {
-    .about-flex {
-        flex-direction: column;
-    }
+  .about-image img {
+    height: auto;
+    max-width: 350px;
+  }
 }
 /* SECTION */
 .education {
@@ -893,9 +997,10 @@ body {
 
 /* Specific rule to center the 5th card */
 .last-cert {
-    grid-column: span 2; /* Spans both columns */
-    width: 50%;         /* Half the width of the box */
+    grid-column: span 2; /* Spans both columns */        /* Half the width of the box */
     justify-self: center; /* Centered in the middle */
+    max-width: 500px;
+    width: 100%;
 }
 
 /* Card Styling */
